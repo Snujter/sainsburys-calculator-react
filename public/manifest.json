@@ -1,15 +1,39 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
+  "manifest_version": 2,
+  "name": "Sainsbury's Jeweler",
+  "version": "1.0",
+
+  "description": "Helps you organize who owes who and what based on an order from Sainsbury's.",
+
+  "icons": {
+    "96": "images/star-of-david-2.png"
+  },
+
+  "browser_action": {
+    "default_icon": "images/star-of-david-2.png",
+    "default_title": "Sainsbury's Jeweler"
+  },
+
+  "permissions": [
+    "tabs",
+    "*://*.sainsburys.co.uk/shop/MyOrders*"
+  ],
+
+  "web_accessible_resources": [
+    "images/jew-1.png",
+    "images/shekel.png",
+    "images/rabinos-ortodoxos.jpg"
+  ],
+
+  "content_scripts": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "matches": ["*://*.sainsburys.co.uk/shop/OrderSummaryDisplay*"],
+      "js": ["jquery-3.3.1.min.js", "content_scripts/jewmaster_btn_adder.js"]
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+
+  "background": {
+    "scripts": ["jquery-3.3.1.min.js", "background/jewmaster.js", "background/open_jewmaster.js"]
+  }
+
 }
