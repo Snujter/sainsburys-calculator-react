@@ -6,7 +6,7 @@ class EqualPayButton extends Component {
         const { payerId, handleClick } = this.props;
         return (
             <input type="checkbox"
-                   checked="checked"
+                   defaultChecked="checked"
                    className={payerId === 'all' ? 'all-checkbox' : 'payer-checkbox'}
                    onClick={handleClick}
             />
@@ -15,7 +15,11 @@ class EqualPayButton extends Component {
 }
 
 EqualPayButton.propTypes = {
-    payerId: PropTypes.string.isRequired,
+    payerId: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+    ]).isRequired,
+    itemId: PropTypes.number.isRequired,
     handleClick: PropTypes.func.isRequired,
 };
 

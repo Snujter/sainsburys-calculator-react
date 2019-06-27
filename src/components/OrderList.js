@@ -10,6 +10,7 @@ class OrderList extends Component {
             const { id, name, quantity, price } = item;
 
             return <OrderRow
+                key={id}
                 id={id}
                 name={name}
                 quantity={quantity}
