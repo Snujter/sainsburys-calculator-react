@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import OrderList from "./components/OrderList";
+import OrderTable from "./components/OrderTable";
 
 class App extends Component {
   constructor() {
@@ -53,7 +53,7 @@ class App extends Component {
     console.log(buyers);
 
     return (
-        <OrderList items={items} delivery={delivery} buyers={buyers}/>
+        <OrderTable items={items} delivery={delivery} buyers={buyers}/>
     );
   }
 }
