@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 
 class EqualPayButton extends Component {
     render() {
-        const { id, handleClick } = this.props;
+        const { payerId, handleClick } = this.props;
         return (
             <input type="checkbox"
-                   id={id}
                    checked="checked"
-                   className={id === 'all' ? 'all-checkbox' : 'payer-checkbox'}
+                   className={payerId === 'all' ? 'all-checkbox' : 'payer-checkbox'}
                    onClick={handleClick}
             />
         );
@@ -16,7 +15,7 @@ class EqualPayButton extends Component {
 }
 
 EqualPayButton.propTypes = {
-    id: PropTypes.string.isRequired,
+    payerId: PropTypes.string.isRequired,
     handleClick: PropTypes.func.isRequired,
 };
 
