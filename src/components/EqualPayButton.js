@@ -3,13 +3,20 @@ import PropTypes from 'prop-types';
 
 class EqualPayButton extends Component {
     render() {
-        const { payerId, handleClick } = this.props;
+        const { payerId, itemId, handleClick } = this.props;
+        const inputId = itemId + '-' + payerId;
         return (
-            <input type="checkbox"
-                   defaultChecked="checked"
-                   className={payerId === 'all' ? 'all-checkbox' : 'payer-checkbox'}
-                   onClick={handleClick}
-            />
+            <div className="payment">
+                <input id={inputId}
+                       type="checkbox"
+                       defaultChecked="checked"
+                       className={payerId === 'all' ? 'all-checkbox' : 'payer-checkbox'}
+                       onClick={handleClick}
+                />
+                <label for={inputId} className="payer-image-container">
+                    <img src="/images/shekel.png" alt="Shekel"/>
+                </label>
+            </div>
         );
     }
 }
