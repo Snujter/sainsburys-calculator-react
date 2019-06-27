@@ -5,7 +5,8 @@ import OrderRow from "./OrderRow";
 class OrderList extends Component {
     render() {
         const { items, buyers } = this.props;
-        const itemList = items.map(item => {
+
+        return items.map(item => {
             const { id, name, quantity, price } = item;
 
             return <OrderRow
@@ -17,8 +18,6 @@ class OrderList extends Component {
                 handleEqualPayBtnClick={handleEqualPayBtnClick}
             />
         });
-
-        return <tr>{itemList}</tr>;
     };
 }
 
