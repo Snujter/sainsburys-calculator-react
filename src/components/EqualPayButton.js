@@ -13,7 +13,7 @@ class EqualPayButton extends Component {
                        className={payerId === 'all' ? 'all-checkbox' : 'payer-checkbox'}
                        onClick={handleClick}
                 />
-                <label for={inputId} className="payer-image-container">
+                <label htmlFor={inputId} className="payer-image-container">
                     <img src="/images/shekel.png" alt="Shekel"/>
                 </label>
             </div>
