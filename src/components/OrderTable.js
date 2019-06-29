@@ -8,7 +8,7 @@ class OrderTable extends Component {
         const { items, delivery, buyers } = this.props;
 
         return (
-            <table>
+            <table id="jewify-table">
                 <thead>
                     <OrderHeader buyers={buyers}/>
                 </thead>

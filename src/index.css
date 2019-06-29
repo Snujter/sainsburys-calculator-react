@@ -84,7 +84,7 @@ body {
 }
 /*name headers*/
 #jewify-table th:nth-child(n+6) {
-  width: 200px;
+  width: 100px;
 }
 #jewify-table td:nth-child(2) {
   text-align: right;
