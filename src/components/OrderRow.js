@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import EqualPayButton from "./EqualPayButton";
-import formatPrice from '../formatters/formatPrice';
+import Price from "./Price";
 
 class OrderRow extends Component {
     render() {
@@ -12,7 +12,7 @@ class OrderRow extends Component {
                 <td>{id}</td>
                 <td>{name}</td>
                 <td>{quantity}</td>
-                <td>{formatPrice(price)}</td>
+                <td><Price price={price}/></td>
                 <td><EqualPayButton payerId="all" itemId={id} handleClick={handleEqualPayBtnClick}/></td>
                 {buyers.map(buyer => (
                     <td key={buyer.id}>
