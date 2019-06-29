@@ -6,7 +6,7 @@ class EqualPayButton extends Component {
         const { payerId, itemId, handleClick } = this.props;
         const inputId = itemId + '-' + payerId;
         return (
-            <div className="payment">
+            <div>
                 <input id={inputId}
                        type="checkbox"
                        defaultChecked="checked"
