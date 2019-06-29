@@ -5,7 +5,7 @@ import Price from "./Price";
 
 class OrderRow extends Component {
     render() {
-        const { id, name, quantity, price, buyers, handleEqualPayBtnClick } = this.props;
+        const { id, name, quantity, price, buyers, payments, handleEqualPayBtnClick } = this.props;
 
         return (
             <tr>
@@ -17,6 +17,7 @@ class OrderRow extends Component {
                 {buyers.map(buyer => (
                     <td key={buyer.id}>
                         <EqualPayButton payerId={buyer.id} itemId={id} handleClick={handleEqualPayBtnClick}/>
+                        <Price price={payments.find(payment => payment.buyerId === buyer.id).price}/>
                     </td>
                 ))}
             </tr>
@@ -30,6 +31,10 @@ OrderRow.propTypes = {
     quantity: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired,
     buyers: PropTypes.array.isRequired,
+    payments: PropTypes.arrayOf(PropTypes.shape({
+        buyerId: PropTypes.number.isRequired,
+        price: PropTypes.number
+    })).isRequired,
     handleEqualPayBtnClick: PropTypes.func.isRequired,
 };
 
