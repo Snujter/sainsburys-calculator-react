@@ -34,9 +34,40 @@ class OrderList extends Component {
     }
 
     handleEqualPayBtnClick(isChecked, itemId, payerId) {
+        const { items } = this.props;
+        const { payments } = this.state;
 
-        console.log('ay fam');
+        const item = items.find(item => item.id === itemId);
+        const nonItemPayments = payments.filter(payment => payment.itemId !== itemId);
+        const itemPayments = payments.filter(payment => payment.itemId === itemId);
 
+        let payerCount = itemPayments.reduce(OrderList.countPayers, 0);
+        payerCount = isChecked ? (payerCount + 1) : (payerCount - 1);
+
+        const newPrice = payerCount > 0 ? Math.floor(item.price / payerCount) : 0;
+        const newItemPayments = itemPayments.map(payment => {
+            const isCurrentPayment = payment.itemId === itemId && payment.payerId === payerId;
+            const price = (isCurrentPayment && !isChecked) || (!isCurrentPayment && payment.price === 0) ?
+                0 :
+                newPrice;
+
+            return {
+                ...payment,
+                price: price
+            };
+        });
+
+        this.setState({payments: [
+            ...nonItemPayments,
+            ...newItemPayments,
+        ]});
+    }
+
+    static countPayers(accumulator, currentPayment) {
+        if (currentPayment.price > 0) {
+            accumulator++;
+        }
+        return accumulator;
     }
 
     render() {
