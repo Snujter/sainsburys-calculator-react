@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class OrderHeader extends Component {
     render() {
-        const { buyers } = this.props;
+        const { payers } = this.props;
 
         return (
             <tr>
@@ -12,14 +12,14 @@ class OrderHeader extends Component {
                 <th>Quantity</th>
                 <th>Price</th>
                 <th>All</th>
-                {buyers.map(buyer => <th key={buyer.id}>{buyer.name}</th>)}
+                {payers.map(payer => <th key={payer.id}>{payer.name}</th>)}
             </tr>
         );
     };
 }
 
 OrderHeader.propTypes = {
-    buyers: PropTypes.array,
+    payers: PropTypes.array,
 };
 
 export default OrderHeader;

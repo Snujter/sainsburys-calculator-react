@@ -6,34 +6,39 @@ class OrderList extends Component {
     constructor(props) {
         super(props);
 
-        const initialPayments = this.setupPayments(props.items, props.buyers);
-
+        const initialPayments = this.setupPayments(props.items, props.payers);
         this.state = {
             initialPayments: initialPayments,
             payments: [...initialPayments],
         };
+
+        this.handleEqualPayBtnClick = this.handleEqualPayBtnClick.bind(this);
     }
 
-    setupPayments(rawItems, buyers) {
+    setupPayments(rawItems, payers) {
         let payments = [];
 
         rawItems.forEach(item => {
-            buyers.forEach(payer => {
+            payers.forEach(payer => {
                 payments.push({
-                    buyerId: payer.id,
+                    payerId: payer.id,
                     itemId: item.id,
-                    price: Math.floor(item.price / buyers.length),
+                    price: Math.floor(item.price / payers.length),
                 });
             });
         });
 
-        console.log(payments);
-
         return payments;
     }
 
+    handleEqualPayBtnClick(isChecked, itemId, payerId) {
+
+        console.log('ay fam');
+
+    }
+
     render() {
-        const { items, buyers } = this.props;
+        const { items, payers } = this.props;
         const { payments } = this.state;
 
         return items.map(item => {
@@ -45,22 +50,17 @@ class OrderList extends Component {
                 name={name}
                 quantity={quantity}
                 price={price}
-                buyers={buyers}
-                handleEqualPayBtnClick={handleEqualPayBtnClick}
+                payers={payers}
+                handleEqualPayBtnClick={this.handleEqualPayBtnClick}
                 payments={payments.filter(payment => payment.itemId === id)}
             />
         });
     };
 }
 
-function handleEqualPayBtnClick()
-{
-    console.log('ay fam');
-}
-
 OrderList.propTypes = {
     items: PropTypes.array,
-    buyers: PropTypes.array,
+    payers: PropTypes.array,
 };
 
 export default OrderList;

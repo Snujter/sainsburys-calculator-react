@@ -37,23 +37,23 @@ class App extends Component {
               {"id": "28", "name":"Sainsbury's Sardines in Sunflower Oil 120g (90g*)","price":"100","quantity":"2"}
           ],
           delivery: {"price":"200"},
-          buyers: [
-              {id: "kriszcson", name: "Kriszcson"},
-              {id: "snajder", name: "Snajder"},
-              {id: "szabo", name: "Szabo"},
+          payers: [
+              {id: 1, name: "Kriszcson"},
+              {id: 2, name: "Snajder"},
+              {id: 3, name: "Szabo"},
           ],
       }
   }
 
   render() {
-    const { items, delivery, buyers } = this.state;
+    const { items, delivery, payers } = this.state;
 
     console.log('items');
     console.log(items);
-    console.log(buyers);
+    console.log(payers);
 
     return (
-        <OrderTable items={this.sanitizeItems(items)} delivery={delivery} buyers={buyers}/>
+        <OrderTable items={this.sanitizeItems(items)} delivery={delivery} payers={payers}/>
     );
   }
 

@@ -5,7 +5,7 @@ import Price from "./Price";
 
 class OrderRow extends Component {
     render() {
-        const { id, name, quantity, price, buyers, payments, handleEqualPayBtnClick } = this.props;
+        const { id, name, quantity, price, payers, payments, handleEqualPayBtnClick } = this.props;
 
         return (
             <tr>
@@ -14,11 +14,11 @@ class OrderRow extends Component {
                 <td>{quantity}</td>
                 <td><Price price={price}/></td>
                 <td><EqualPayButton payerId="all" itemId={id} handleClick={handleEqualPayBtnClick}/></td>
-                {buyers.map(buyer => (
-                    <td key={buyer.id}>
+                {payers.map(payer => (
+                    <td key={payer.id}>
                         <div className="payment">
-                            <Price price={payments.find(payment => payment.buyerId === buyer.id).price}/>
-                            <EqualPayButton payerId={buyer.id} itemId={id} handleClick={handleEqualPayBtnClick}/>
+                            <Price price={payments.find(payment => payment.payerId === payer.id).price}/>
+                            <EqualPayButton payerId={payer.id} itemId={id} handleClick={handleEqualPayBtnClick}/>
                         </div>
                     </td>
                 ))}
@@ -32,9 +32,9 @@ OrderRow.propTypes = {
     name: PropTypes.string.isRequired,
     quantity: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired,
-    buyers: PropTypes.array.isRequired,
+    payers: PropTypes.array.isRequired,
     payments: PropTypes.arrayOf(PropTypes.shape({
-        buyerId: PropTypes.number.isRequired,
+        payerId: PropTypes.number.isRequired,
         price: PropTypes.number
     })).isRequired,
     handleEqualPayBtnClick: PropTypes.func.isRequired,
