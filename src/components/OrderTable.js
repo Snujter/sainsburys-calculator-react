@@ -5,7 +5,7 @@ import OrderHeader from "./OrderHeader";
 
 class OrderTable extends Component {
     render() {
-        const { items, delivery, payers } = this.props;
+        const { items, delivery, payers, payments, handleEqualPayBtnClick } = this.props;
 
         return (
             <table id="jewify-table">
@@ -13,7 +13,12 @@ class OrderTable extends Component {
                     <OrderHeader payers={payers}/>
                 </thead>
                 <tbody>
-                    <OrderList items={items} delivery={delivery} payers={payers}/>
+                    <OrderList items={items}
+                               delivery={delivery}
+                               payers={payers}
+                               handleEqualPayBtnClick={handleEqualPayBtnClick}
+                               payments={payments}
+                    />
                 </tbody>
             </table>
         );
@@ -24,6 +29,8 @@ OrderTable.propTypes = {
     items: PropTypes.array,
     delivery: PropTypes.object,
     payers: PropTypes.array,
+    payments: PropTypes.array,
+    handleEqualPayBtnClick: PropTypes.func,
 };
 
 export default OrderTable;
