@@ -13,7 +13,6 @@ class OrderRow extends Component {
                 <td>{name}</td>
                 <td>{quantity}</td>
                 <td><Price price={price}/></td>
-                <td><EqualPayButton payerId="all" itemId={id} handleClick={handleEqualPayBtnClick}/></td>
                 {payers.map(payer => (
                     <td key={payer.id}>
                         <div className="payment">

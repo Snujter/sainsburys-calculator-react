@@ -11,7 +11,6 @@ class OrderHeader extends Component {
                 <th>Name</th>
                 <th>Quantity</th>
                 <th>Price</th>
-                <th>All</th>
                 {payers.map(payer => <th key={payer.id}>{payer.name}</th>)}
             </tr>
         );
