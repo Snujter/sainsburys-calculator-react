@@ -34,8 +34,10 @@ OrderRow.propTypes = {
     price: PropTypes.number.isRequired,
     payers: PropTypes.array.isRequired,
     payments: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number,
         payerId: PropTypes.number.isRequired,
-        price: PropTypes.number
+        itemId: PropTypes.number,
+        price: PropTypes.number,
     })).isRequired,
     handleEqualPayBtnClick: PropTypes.func.isRequired,
 };

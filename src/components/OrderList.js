@@ -18,9 +18,11 @@ class OrderList extends Component {
     setupPayments(rawItems, payers) {
         let payments = [];
 
+        let paymentId = 0;
         rawItems.forEach(item => {
             payers.forEach(payer => {
                 payments.push({
+                    id: paymentId++,
                     payerId: payer.id,
                     itemId: item.id,
                     price: Math.floor(item.price / payers.length),
