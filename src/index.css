@@ -83,7 +83,7 @@ body {
   font-weight: bolder;
 }
 /*name headers*/
-#jewify-table th:nth-child(n+6) {
+#jewify-table th:nth-child(n+5) {
   width: 100px;
 }
 #jewify-table td:nth-child(2) {
