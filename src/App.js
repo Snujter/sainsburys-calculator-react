@@ -80,6 +80,7 @@ class App extends Component {
       };
 
       this.handleEqualPayBtnClick = this.handleEqualPayBtnClick.bind(this);
+      this.handlePriceChange = this.handlePriceChange.bind(this);
   }
 
   handleEqualPayBtnClick(isChecked, itemId, payerId) {
@@ -111,6 +112,27 @@ class App extends Component {
       ]});
   }
 
+  handlePriceChange(id, newPrice) {
+      const items = this.state.items.slice();
+      let item = items.find(item => item.id === id);
+      item.price = newPrice * 100;
+
+      this.setState({
+          items: [...items]
+      });
+      //
+      //
+      //
+      // const item = this.state.items.find(item => item.id === id);
+      // const otherItems = this.state.items.filter(item => item.id !== id);
+      //
+      // const newItem = Object.assign(item, {price: newPrice * 100});
+      //
+      // this.setState({
+      //     items: [...otherItems, newItem]
+      // });
+  }
+
   static countPayers(accumulator, currentPayment) {
       return currentPayment.price > 0 ? (accumulator + 1) : accumulator;
   }
@@ -127,6 +149,7 @@ class App extends Component {
                   payers={payers}
                   payments={payments}
                   handleEqualPayBtnClick={this.handleEqualPayBtnClick}
+                  handlePriceChange={this.handlePriceChange}
       />
     );
   }

@@ -4,7 +4,7 @@ import OrderRow from "./OrderRow";
 
 class OrderList extends Component {
     render() {
-        const { items, payers, handleEqualPayBtnClick, payments } = this.props;
+        const { items, payers, handleEqualPayBtnClick, handlePriceChange, payments } = this.props;
 
         console.log("aaaaaaaaaaaa");
         console.log(payments);
@@ -20,6 +20,7 @@ class OrderList extends Component {
                 price={price}
                 payers={payers}
                 handleEqualPayBtnClick={handleEqualPayBtnClick}
+                handlePriceChange={handlePriceChange}
                 payments={payments.filter(payment => payment.itemId === id)}
             />
         });
@@ -31,6 +32,7 @@ OrderList.propTypes = {
     payers: PropTypes.array,
     payments: PropTypes.array,
     handleEqualPayBtnClick: PropTypes.func.isRequired,
+    handlePriceChange: PropTypes.func.isRequired,
 };
 
 export default OrderList;

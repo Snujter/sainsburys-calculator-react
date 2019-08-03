@@ -4,15 +4,35 @@ import EqualPayButton from "./EqualPayButton";
 import Price from "./Price";
 
 class OrderRow extends Component {
+    constructor() {
+        super();
+        this.state = {
+            isChangingPrice: false,
+            newPrice: 0,
+        }
+    }
+
     render() {
-        const { id, name, quantity, price, payers, payments, handleEqualPayBtnClick } = this.props;
+        const {
+            id,
+            name,
+            quantity,
+            payers,
+            payments,
+
+            handleEqualPayBtnClick
+        } = this.props;
+
+        const { isChangingPrice } = this.state;
+
+        console.log(isChangingPrice);
 
         return (
             <tr>
                 <td>{id}</td>
                 <td>{name}</td>
                 <td>{quantity}</td>
-                <td><Price price={price}/></td>
+                <td>{isChangingPrice ? this.renderChangingPrice() : this.renderPrice()}</td>
                 {payers.map(payer => (
                     <td key={payer.id}>
                         <div className="payment">
@@ -24,6 +44,29 @@ class OrderRow extends Component {
             </tr>
         );
     };
+
+    renderChangingPrice() {
+        return (
+            <div>
+                <input type="number" onChange={(e) => this.setState({newPrice: e.target.value})}/>
+                <button onClick={() => this.handlePriceChange()}>Save</button>
+            </div>
+        );
+    }
+
+    handlePriceChange() {
+        const { id, handlePriceChange } = this.props;
+
+        this.setState({isChangingPrice: false});
+        handlePriceChange(id, this.state.newPrice);
+    }
+
+    renderPrice = () => (
+        <div>
+            <Price price={this.props.price}/>
+            <button onClick={() => this.setState({isChangingPrice: true})}>Change</button>
+        </div>
+    );
 }
 
 OrderRow.propTypes = {
@@ -39,6 +82,7 @@ OrderRow.propTypes = {
         price: PropTypes.number,
     })).isRequired,
     handleEqualPayBtnClick: PropTypes.func.isRequired,
+    handlePriceChange: PropTypes.func.isRequired,
 };
 
 export default OrderRow;
