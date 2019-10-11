@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import OrderList from "./OrderList";
 import OrderHeader from "./OrderHeader";
+import DeliveryRow from "./DeliveryRow";
 
 class OrderTable extends Component {
     render() {
@@ -14,12 +15,12 @@ class OrderTable extends Component {
                 </thead>
                 <tbody>
                     <OrderList items={items}
-                               delivery={delivery}
                                payers={payers}
                                handleEqualPayBtnClick={handleEqualPayBtnClick}
                                handlePriceChange={handlePriceChange}
                                payments={payments}
                     />
+                    <DeliveryRow payers={payers} price={delivery.price}/>
                 </tbody>
             </table>
         );
