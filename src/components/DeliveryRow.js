@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import OrderList from "./OrderList";
-import OrderHeader from "./OrderHeader";
 import Price from "./Price";
 
 class DeliveryRow extends Component {

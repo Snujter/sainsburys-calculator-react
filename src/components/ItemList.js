@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import OrderRow from "./OrderRow";
 
-class OrderList extends Component {
+class ItemList extends Component {
     render() {
         const { items, payers, handleEqualPayBtnClick, handlePriceChange, payments } = this.props;
 
@@ -27,7 +27,7 @@ class OrderList extends Component {
     };
 }
 
-OrderList.propTypes = {
+ItemList.propTypes = {
     items: PropTypes.array,
     payers: PropTypes.array,
     payments: PropTypes.array,
@@ -35,4 +35,4 @@ OrderList.propTypes = {
     handlePriceChange: PropTypes.func.isRequired,
 };
 
-export default OrderList;
+export default ItemList;

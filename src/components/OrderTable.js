@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import OrderList from "./OrderList";
+import ItemList from "./ItemList";
 import OrderHeader from "./OrderHeader";
 import DeliveryRow from "./DeliveryRow";
 
@@ -14,7 +14,7 @@ class OrderTable extends Component {
                     <OrderHeader payers={payers}/>
                 </thead>
                 <tbody>
-                    <OrderList items={items}
+                    <ItemList items={items}
                                payers={payers}
                                handleEqualPayBtnClick={handleEqualPayBtnClick}
                                handlePriceChange={handlePriceChange}
