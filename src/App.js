@@ -133,6 +133,52 @@ class App extends Component {
       // });
   }
 
+  getCsv() {
+      const { payers, items, payments, delivery } = this.state;
+
+      let rows = [];
+      let headers = [
+          "Item no.",
+          "Name",
+          "Quantity",
+          "Price",
+      ];
+      payers.map(payer => {
+          headers.push(payer.name);
+      });
+
+      rows.push(headers);
+
+      items.map((item) => {
+          const itemPayments = payments.filter(payment => payment.itemId === item.id);
+          const payerPayments = payers.map(payer => {
+              const payment = itemPayments.find(payment => payment.payerId === payer.id);
+
+              return payment.price;
+          });
+
+          rows.push([
+              item.id + 1,
+              item.name.trim(),
+              item.quantity,
+              formatPrice(item.price),
+              ...payerPayments,
+          ]);
+      });
+
+      // delivery
+      const deliveryPrice = formatPrice(delivery.price / payers.length)
+      rows.push([
+          '',
+          'Delivery',
+          '',
+          '',
+          ...(new Array(payers.length)).fill(deliveryPrice, 0, payers.length),
+      ]);
+
+      return rows;
+  }
+
   static countPayers(accumulator, currentPayment) {
       return currentPayment.price > 0 ? (accumulator + 1) : accumulator;
   }
@@ -140,17 +186,17 @@ class App extends Component {
   render() {
     const { items, delivery, payers, payments } = this.state;
 
-    console.log(items);
-    console.log(payers);
-
     return (
-      <OrderTable items={items}
-                  delivery={delivery}
-                  payers={payers}
-                  payments={payments}
-                  handleEqualPayBtnClick={this.handleEqualPayBtnClick}
-                  handlePriceChange={this.handlePriceChange}
-      />
+        <div>
+          <OrderTable items={items}
+                      delivery={delivery}
+                      payers={payers}
+                      payments={payments}
+                      handleEqualPayBtnClick={this.handleEqualPayBtnClick}
+                      handlePriceChange={this.handlePriceChange}
+          />
+          <CSVLink data={this.getCsv()}>Download CSV</CSVLink>
+        </div>
     );
   }
 }
