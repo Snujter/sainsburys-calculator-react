@@ -138,19 +138,19 @@ class App extends Component {
       const { payers, items, payments, delivery } = this.state;
 
       let rows = [];
+
+      // headers
       let headers = [
           "Item no.",
           "Name",
           "Quantity",
           "Price",
+          ...payers.map(payer => payer.name),
       ];
-      payers.map(payer => {
-          headers.push(payer.name);
-      });
-
       rows.push(headers);
 
-      items.map((item) => {
+      // items
+      const itemData = items.map((item) => {
           const itemPayments = payments.filter(payment => payment.itemId === item.id);
           const payerPayments = payers.map(payer => {
               const payment = itemPayments.find(payment => payment.payerId === payer.id);
@@ -158,23 +158,24 @@ class App extends Component {
               return payment.price;
           });
 
-          rows.push([
+          return [
               item.id + 1,
               item.name.trim(),
               item.quantity,
-              formatPrice(item.price),
+              item.price,
               ...payerPayments,
-          ]);
+          ];
       });
+      rows.push(...itemData);
 
       // delivery
-      const deliveryPrice = formatPrice(delivery.price / payers.length)
+      const deliveryPrice = Math.round(delivery.price / payers.length)
       rows.push([
           '',
           'Delivery',
           '',
           '',
-          ...(new Array(payers.length)).fill(deliveryPrice, 0, payers.length),
+          ...(new Array(payers.length)).fill(deliveryPrice),
       ]);
 
       return rows;
