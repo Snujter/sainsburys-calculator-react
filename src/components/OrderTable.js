@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ItemList from "./ItemList";
 import OrderHeader from "./OrderHeader";
 import DeliveryRow from "./DeliveryRow";
+import TotalPriceRow from "./TotalPriceRow";
 
 class OrderTable extends Component {
     render() {
@@ -21,6 +22,7 @@ class OrderTable extends Component {
                                payments={payments}
                     />
                     <DeliveryRow payers={payers} price={delivery.price}/>
+                    <TotalPriceRow payers={payers} payments={payments} deliveryPrice={delivery.price}/>
                 </tbody>
             </table>
         );
