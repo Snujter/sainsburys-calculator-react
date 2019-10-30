@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import OrderTable from "./components/OrderTable";
+import { CSVLink } from "react-csv";
 
 const setupPayments = (rawItems, payers) => {
     let payments = [];
@@ -133,6 +134,53 @@ class App extends Component {
       // });
   }
 
+  getCsv() {
+      const { payers, items, payments, delivery } = this.state;
+
+      let rows = [];
+
+      // headers
+      let headers = [
+          "Item no.",
+          "Name",
+          "Quantity",
+          "Price",
+          ...payers.map(payer => payer.name),
+      ];
+      rows.push(headers);
+
+      // items
+      const itemData = items.map((item) => {
+          const itemPayments = payments.filter(payment => payment.itemId === item.id);
+          const payerPayments = payers.map(payer => {
+              const payment = itemPayments.find(payment => payment.payerId === payer.id);
+
+              return payment.price;
+          });
+
+          return [
+              item.id + 1,
+              item.name.trim(),
+              item.quantity,
+              item.price,
+              ...payerPayments,
+          ];
+      });
+      rows.push(...itemData);
+
+      // delivery
+      const deliveryPrice = Math.round(delivery.price / payers.length)
+      rows.push([
+          '',
+          'Delivery',
+          '',
+          '',
+          ...(new Array(payers.length)).fill(deliveryPrice),
+      ]);
+
+      return rows;
+  }
+
   static countPayers(accumulator, currentPayment) {
       return currentPayment.price > 0 ? (accumulator + 1) : accumulator;
   }
@@ -140,17 +188,17 @@ class App extends Component {
   render() {
     const { items, delivery, payers, payments } = this.state;
 
-    console.log(items);
-    console.log(payers);
-
     return (
-      <OrderTable items={items}
-                  delivery={delivery}
-                  payers={payers}
-                  payments={payments}
-                  handleEqualPayBtnClick={this.handleEqualPayBtnClick}
-                  handlePriceChange={this.handlePriceChange}
-      />
+        <div>
+          <OrderTable items={items}
+                      delivery={delivery}
+                      payers={payers}
+                      payments={payments}
+                      handleEqualPayBtnClick={this.handleEqualPayBtnClick}
+                      handlePriceChange={this.handlePriceChange}
+          />
+          <CSVLink data={this.getCsv()}>Download CSV</CSVLink>
+        </div>
     );
   }
 }
