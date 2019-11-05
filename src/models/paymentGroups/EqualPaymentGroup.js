@@ -37,7 +37,7 @@ export const EqualPaymentGroupModel = types
         get totalToPay() {
             return self.total - self.totalPaid;
         },
-        getAmountForPayer(payerId, format = false) {
+        getAmountForPayer(payerId) {
             const payer = self.payers.find(payer => payer.id === payerId);
             if (!payer) {
                 return 0;
