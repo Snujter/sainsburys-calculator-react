@@ -50,7 +50,7 @@ export const AppModel = types
                 '',
                 'Delivery',
                 '',
-                '',
+                formatPrice(self.delivery.price),
                 ...self.payers.map(payer => formatPrice(self.delivery.pricePerPerson)),
             ]);
 
@@ -59,7 +59,7 @@ export const AppModel = types
                 '',
                 'TOTALS',
                 '',
-                '',
+                formatPrice(self.totalPrice),
                 ...self.payers.map(payer => formatPrice(payer.totalPaid)),
             ]);
 
