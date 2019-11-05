@@ -4,25 +4,16 @@ import Price from "./Price";
 import {observer} from "mobx-react";
 
 class OrderRow extends Component {
-    constructor() {
-        super();
-        this.state = {
-            isChangingPrice: false,
-            newPrice: 0,
-        }
-    }
-
     render() {
         const { payers, paymentGroup, listPosition } = this.props;
-        const { name, quantity } = paymentGroup.item;
-        const { isChangingPrice } = this.state;
+        const { name, quantity, totalPrice } = paymentGroup.item;
 
         return (
             <tr>
                 <td>{listPosition + 1}</td>
                 <td>{name}</td>
                 <td>{quantity}</td>
-                <td>{isChangingPrice ? this.renderChangingPrice() : this.renderPrice()}</td>
+                <td><Price price={totalPrice}/></td>
                 {payers.map(payer => (
                     <td key={payer.id}>
                         <div className="payment">
@@ -34,29 +25,6 @@ class OrderRow extends Component {
             </tr>
         );
     };
-
-    renderChangingPrice() {
-        return (
-            <div>
-                <input type="number" onChange={(e) => this.setState({newPrice: e.target.value})}/>
-                <button onClick={() => this.handlePriceChange()}>Save</button>
-            </div>
-        );
-    }
-
-    handlePriceChange() {
-        const { id, handlePriceChange } = this.props;
-
-        this.setState({isChangingPrice: false});
-        handlePriceChange(id, this.state.newPrice);
-    }
-
-    renderPrice = () => (
-        <div>
-            <Price price={this.props.paymentGroup.item.totalPrice}/>
-            <button onClick={() => this.setState({isChangingPrice: true})}>Change</button>
-        </div>
-    );
 }
 
 export default observer(OrderRow);
