@@ -1,38 +1,21 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import OrderRow from "./OrderRow";
+import {observer} from "mobx-react";
 
 class ItemList extends Component {
     render() {
-        const { items, payers, handleEqualPayBtnClick, handlePriceChange, payments } = this.props;
+        const { items, payers, paymentGroups, handlePriceChange } = this.props;
 
-        console.log("aaaaaaaaaaaa");
-        console.log(payments);
-
-        return items.map(item => {
-            const { id, name, quantity, price } = item;
-
+        return items.map((item, i) => {
             return <OrderRow
-                key={id}
-                id={id}
-                name={name}
-                quantity={quantity}
-                price={price}
+                key={item.id}
+                listPosition={i}
                 payers={payers}
-                handleEqualPayBtnClick={handleEqualPayBtnClick}
                 handlePriceChange={handlePriceChange}
-                payments={payments.filter(payment => payment.itemId === id)}
+                paymentGroup={paymentGroups.find(group => group.item && group.item.id === item.id)}
             />
         });
     };
 }
 
-ItemList.propTypes = {
-    items: PropTypes.array,
-    payers: PropTypes.array,
-    payments: PropTypes.array,
-    handleEqualPayBtnClick: PropTypes.func.isRequired,
-    handlePriceChange: PropTypes.func.isRequired,
-};
-
-export default ItemList;
+export default observer(ItemList);
