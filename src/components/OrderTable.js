@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import ItemList from "./ItemList";
 import OrderHeader from "./OrderHeader";
 import DeliveryRow from "./DeliveryRow";
 import TotalPriceRow from "./TotalPriceRow";
+import {observer} from "mobx-react";
 
 class OrderTable extends Component {
     render() {
-        const { items, delivery, payers, payments, handleEqualPayBtnClick, handlePriceChange } = this.props;
+        const { items, delivery, payers, paymentGroups, totalPrice } = this.props;
 
         return (
             <table id="jewify-table">
@@ -16,26 +16,15 @@ class OrderTable extends Component {
                 </thead>
                 <tbody>
                     <ItemList items={items}
-                               payers={payers}
-                               handleEqualPayBtnClick={handleEqualPayBtnClick}
-                               handlePriceChange={handlePriceChange}
-                               payments={payments}
+                              payers={payers}
+                              paymentGroups={paymentGroups}
                     />
-                    <DeliveryRow payers={payers} price={delivery.price}/>
-                    <TotalPriceRow payers={payers} payments={payments} deliveryPrice={delivery.price}/>
+                    <DeliveryRow payers={payers} delivery={delivery}/>
+                    <TotalPriceRow payers={payers} totalPrice={totalPrice}/>
                 </tbody>
             </table>
         );
     }
 }
 
-OrderTable.propTypes = {
-    items: PropTypes.array,
-    delivery: PropTypes.object,
-    payers: PropTypes.array,
-    payments: PropTypes.array,
-    handleEqualPayBtnClick: PropTypes.func,
-    handlePriceChange: PropTypes.func,
-};
-
-export default OrderTable;
+export default observer(OrderTable);

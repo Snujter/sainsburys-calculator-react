@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import formatPrice from '../formatters/formatPrice';
+import {observer} from "mobx-react";
 
 class Price extends Component {
     render() {
@@ -12,8 +12,4 @@ class Price extends Component {
     }
 }
 
-Price.propTypes = {
-    price: PropTypes.number.isRequired,
-};
-
-export default Price;
+export default observer(Price);

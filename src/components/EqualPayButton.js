@@ -1,17 +1,26 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import {observer} from "mobx-react";
 
 class EqualPayButton extends Component {
+    handleClick(isChecked) {
+        const { paymentGroup, payerId } = this.props;
+        if (isChecked) {
+            paymentGroup.addPayer(payerId);
+        } else {
+            paymentGroup.removePayer(payerId);
+        }
+    }
+
     render() {
-        const { payerId, itemId, handleClick } = this.props;
-        const inputId = itemId + '-' + payerId;
+        const { paymentGroup, payerId } = this.props;
+        const inputId = paymentGroup.id + payerId;
         return (
             <div>
                 <input id={inputId}
                        type="checkbox"
                        defaultChecked="checked"
                        className={payerId === 'all' ? 'all-checkbox' : 'payer-checkbox'}
-                       onClick={(e) => handleClick(e.target.checked, itemId, payerId)}
+                       onClick={(e) => this.handleClick(e.target.checked)}
                 />
                 <label htmlFor={inputId} className="payer-image-container">
                     <img src="/images/shekel.png" alt="Shekel"/>
@@ -21,13 +30,4 @@ class EqualPayButton extends Component {
     }
 }
 
-EqualPayButton.propTypes = {
-    payerId: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-    ]).isRequired,
-    itemId: PropTypes.number.isRequired,
-    handleClick: PropTypes.func.isRequired,
-};
-
-export default EqualPayButton;
+export default observer(EqualPayButton);
