@@ -17,6 +17,9 @@ export const AppModel = types
         get totalPaid() {
             return self.paymentGroups.reduce((acc, group) => acc + group.totalPaid);
         },
+        get totalPrice() {
+            return self.items.reduce((acc, item) => acc + item.totalPrice, 0) + self.delivery.price;
+        },
         get csvData() {
             let rows = [];
 

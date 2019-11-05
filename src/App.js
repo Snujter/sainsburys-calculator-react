@@ -13,7 +13,7 @@ class App extends Component {
                       delivery={app.delivery}
                       payers={app.payers}
                       paymentGroups={app.paymentGroups}
-                      totalPrice={app.totalPaid}
+                      totalPrice={app.totalPrice}
           />
           <CSVLink data={app.csvData}>Download CSV</CSVLink>
         </div>

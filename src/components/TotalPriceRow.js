@@ -4,15 +4,14 @@ import {observer} from "mobx-react";
 
 class TotalPriceRow extends Component {
     render() {
-        const { payers } = this.props;
-        const totalPaid = payers.reduce((acc, payer) => acc + payer.totalPaid, 0);
+        const { payers, totalPrice } = this.props;
 
         return (
             <tr>
                 <td>TOTALS</td>
                 <td/>
                 <td/>
-                <td><Price price={totalPaid}/></td>
+                <td><Price price={totalPrice}/></td>
                 {payers.map(payer => (
                     <td key={payer.id}>
                         <Price price={payer.totalPaid}/>
