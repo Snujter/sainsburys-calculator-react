@@ -1,5 +1,4 @@
-import {getRoot, types} from "mobx-state-tree";
-import * as React from "react";
+import {types} from "mobx-state-tree";
 
 export const ItemModel = types
     .model("ItemModel", {

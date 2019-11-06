@@ -1,5 +1,4 @@
 import { types } from "mobx-state-tree";
-import * as React from "react";
 import {EqualPaymentGroupModel} from "./paymentGroups/EqualPaymentGroup";
 import {PayerModel} from "./Payer";
 import {ItemModel} from "./Item";
@@ -40,7 +39,7 @@ export const AppModel = types
                     group.item.name,
                     group.item.quantity,
                     group.item.total,
-                    ...self.payers.map(payer => group.getAmountForPayer(payer.id, true)),
+                    ...self.payers.map(payer => formatPrice(group.getAmountForPayer(payer.id))),
                 ];
             });
             rows.push(...itemData);

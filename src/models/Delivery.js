@@ -1,5 +1,4 @@
 import { types } from "mobx-state-tree";
-import * as React from "react";
 import {PayerModel} from "./Payer";
 
 export const DeliveryModel = types
@@ -10,6 +9,6 @@ export const DeliveryModel = types
     })
     .views(self => ({
         get pricePerPerson() {
-            return Math.round(self.price / self.payers.length);
+            return Math.floor(self.price / self.payers.length);
         },
     }));

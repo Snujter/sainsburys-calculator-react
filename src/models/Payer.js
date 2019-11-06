@@ -1,5 +1,4 @@
-import {getParent, getRoot, types} from "mobx-state-tree";
-import * as React from "react";
+import {getRoot, types} from "mobx-state-tree";
 
 export const PayerModel = types
     .model("PayerModel", {
