@@ -8,9 +8,7 @@ class DeliveryRow extends Component {
 
         return (
             <tr>
-                <td>Delivery</td>
-                <td/>
-                <td/>
+                <td colSpan={3}>Delivery</td>
                 <td><Price price={delivery.price}/></td>
                 {payers.map(payer => (
                     <td key={payer.id}>

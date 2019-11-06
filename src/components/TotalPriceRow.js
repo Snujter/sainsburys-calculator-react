@@ -8,9 +8,7 @@ class TotalPriceRow extends Component {
 
         return (
             <tr>
-                <td>TOTALS</td>
-                <td/>
-                <td/>
+                <td colSpan={3}>TOTALS</td>
                 <td><Price price={totalPrice}/></td>
                 {payers.map(payer => (
                     <td key={payer.id}>
