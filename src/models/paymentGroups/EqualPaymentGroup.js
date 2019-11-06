@@ -17,7 +17,7 @@ export const EqualPaymentGroupModel = types
 
             self.payers.push(payerId);
             if (self.remainder && !self.remainderPayer) {
-                self.setRemainderPayer(self.remainder ? self.randomPayer.id : null);
+                self.setRemainderPayer(self.randomPayer.id);
             }
         },
         removePayer(idToRemove) {
