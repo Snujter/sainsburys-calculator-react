@@ -9,6 +9,6 @@ export const DeliveryModel = types
     })
     .views(self => ({
         get pricePerPerson() {
-            return Math.round(self.price / self.payers.length);
+            return Math.floor(self.price / self.payers.length);
         },
     }));
