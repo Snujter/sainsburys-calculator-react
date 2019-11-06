@@ -1,4 +1,4 @@
-import {getParent, types} from "mobx-state-tree";
+import {types} from "mobx-state-tree";
 import {ItemModel} from "../Item";
 import {PayerModel} from "../Payer";
 
@@ -10,10 +10,6 @@ export const EqualPaymentGroupModel = types
         remainderPayer: types.maybeNull(types.reference(PayerModel))
     })
     .actions(self => ({
-        afterAttach() {
-            const parent = getParent(self);
-            console.log(parent);
-        },
         addPayer(payerId) {
             if (self.payers.find(payer => payer.id === payerId)) {
                 return;

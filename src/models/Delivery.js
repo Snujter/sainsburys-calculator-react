@@ -1,5 +1,4 @@
 import { types } from "mobx-state-tree";
-import * as React from "react";
 import {PayerModel} from "./Payer";
 
 export const DeliveryModel = types

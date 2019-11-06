@@ -1,5 +1,4 @@
 import { types } from "mobx-state-tree";
-import * as React from "react";
 import {EqualPaymentGroupModel} from "./paymentGroups/EqualPaymentGroup";
 import {PayerModel} from "./Payer";
 import {ItemModel} from "./Item";
