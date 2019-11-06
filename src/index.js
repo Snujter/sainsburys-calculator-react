@@ -36,11 +36,23 @@ const formatDelivery = (rawDelivery, payerIds) => {
 }
 
 const initPaymentGroups = (items, payerIds) => {
-    return items.map(item => EqualPaymentGroupModel.create({
-        id: generateUUID(),
-        item: item.id,
-        payers: payerIds,
-    }))
+    let currentPayerIndex = 0;
+
+    return items.map(item => {
+        let remainderPayer = null;
+        if (item.total % payerIds.length !== 0) {
+            remainderPayer = payerIds[currentPayerIndex];
+            const isLastIndex = currentPayerIndex === (payerIds.length - 1);
+            currentPayerIndex = isLastIndex ? 0 : currentPayerIndex + 1;
+        }
+
+        return EqualPaymentGroupModel.create({
+            id: generateUUID(),
+            item: item.id,
+            payers: payerIds,
+            remainderPayer: remainderPayer,
+        })
+    })
 };
 
 const payers = formatPayers(testData.payers);
