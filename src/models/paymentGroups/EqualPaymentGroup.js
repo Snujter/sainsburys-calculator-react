@@ -52,10 +52,12 @@ export const EqualPaymentGroupModel = types
         get payerIds() {
             return self.payers.map(payer => payer.id);
         },
+        hasPayer(payerId) {
+            return self.payerIds.indexOf(payerId) !== -1;
+        },
         getAmountForPayer(payerId) {
             let amount = 0;
-            const payer = self.payers.find(payer => payer.id === payerId);
-            if (payer) {
+            if (self.hasPayer(payerId)) {
                 amount = self.amountPerPerson;
                 if (self.remainder && self.remainderPayer && self.remainderPayer.id === payerId) {
                     amount += self.remainder;

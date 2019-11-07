@@ -5,7 +5,7 @@ import {observer} from "mobx-react";
 class EqualPayment extends Component {
     handleClick = () => {
         const { payer, paymentGroup } = this.props;
-        if (paymentGroup.payerIds.indexOf(payer.id) === -1) {
+        if (!paymentGroup.hasPayer(payer.id)) {
             paymentGroup.addPayer(payer.id);
         } else {
             paymentGroup.removePayer(payer.id);
