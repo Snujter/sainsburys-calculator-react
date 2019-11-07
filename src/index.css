@@ -1,97 +1,61 @@
-/*body {*/
-  /*margin: 0;*/
-  /*padding: 0;*/
-  /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",*/
-    /*"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",*/
-    /*sans-serif;*/
-  /*-webkit-font-smoothing: antialiased;*/
-  /*-moz-osx-font-smoothing: grayscale;*/
-/*}*/
-
-/*code {*/
-  /*font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",*/
-    /*monospace;*/
-/*}*/
-
 body {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  /*background: url("https://cremationinstitute.com/wp-content/uploads/2017/09/Orthodox-Jewish-Men.jpg") no-repeat center;*/
-  /*background-size: cover;*/
-  /*position: relative;*/
-  margin: 0;
-}
-
-#content {
-  position: relative;
-}
-#content:after {
-  content : "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-image: url("/icons/rabinos-ortodoxos.jpg");
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-  opacity : 0.2;
-  z-index: -1;
+  background: linear-gradient(162deg, rgba(26,6,40,1) 0%, rgba(52,7,50,1) 50%, rgba(71,2,68,1) 100%);
 }
 
 #jewify-table {
-  border-collapse: separate;
+  /*border-collapse: collapse;*/
+  table-layout: fixed;
   max-width: 1600px;
   padding: 20px;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-#jewify-table td, #jewify-table th {
-  border: 1px solid #d1d3fc;
-  padding: 12px;
-}
-
-#jewify-table td.center {
-  text-align: center;
+  margin: 0 auto;
+  color: #d8e0e8;
 }
 
 #jewify-table th {
-  text-align: left;
-  background-color: #875F9A;
-  color: white;
-  padding: 15px 8px 15px 8px;
+  background-color: #182736;
+  /*border-bottom: 1px solid white;*/
+  padding: 15px 8px;
 }
-
-#jewify-table td.payer {
-  text-align: center;
-  cursor: pointer;
-}
-
-#jewify-table td.all-col {text-align: center;}
-#jewify-table tr:hover {background-color: #d1d3fc;}
-/*summary*/
-#jewify-table tfoot {
-  height: 60px;
-  font-size: 20px;
-}
-#jewify-table tfoot td:first-child {
-  text-align: right;
-}
-#jewify-table tfoot td {
-  text-align: center;
-  font-weight: bolder;
-  color: white;
-  background-color: #875F9A;
-  border: 1px solid #d1d3fc;
-}
-/*delivery*/
-#jewify-table tr:last-child td:not(:first-child) {
-  text-align: center;
-  font-weight: bolder;
+#jewify-table tbody {
+  background-color: #282c34;
 }
 /*name headers*/
 #jewify-table th:nth-child(n+5) {
   width: 100px;
+}
+
+#jewify-table td {
+  color: #d8e0e8;
+  padding: 12px;
+}
+#jewify-table td.payer {
+  text-align: center;
+  cursor: pointer;
+  color: #b8e6b8;
+  background-color: rgba(0,100,0,0.1);
+}
+#jewify-table td.payer.inactive {
+  opacity: 0.8;
+  color: #e6b8c2;
+  background-color: rgba(150,0,0,0.1);
+}
+
+#jewify-table tr:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+#jewify-table td:hover {
+  -webkit-box-shadow:inset 0px 0px 0px 2px #a5e6e8;
+  -moz-box-shadow:inset 0px 0px 0px 2px #a5e6e8;
+  box-shadow:inset 0px 0px 0px 2px #a5e6e8;
+}
+
+/*totals*/
+#jewify-table tr:last-child td:not(:first-child) {
+  text-align: center;
+  font-weight: bolder;
+  background-color: #282c34;
 }
 
 .hidden {

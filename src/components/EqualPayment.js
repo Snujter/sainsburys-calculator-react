@@ -16,7 +16,7 @@ class EqualPayment extends Component {
         const { payer, paymentGroup } = this.props;
 
         return (
-            <td className="payer" onClick={this.handleClick}>
+            <td className={"payer" + (!paymentGroup.hasPayer(payer.id) ? " inactive" : "")} onClick={this.handleClick}>
                 <Price price={paymentGroup.getAmountForPayer(payer.id)}/>
             </td>
         );
