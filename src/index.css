@@ -48,7 +48,11 @@ body {
 
 #jewify-table td, #jewify-table th {
   border: 1px solid #d1d3fc;
-  padding: 8px;
+  padding: 12px;
+}
+
+#jewify-table td.center {
+  text-align: center;
 }
 
 #jewify-table th {
@@ -58,9 +62,12 @@ body {
   padding: 15px 8px 15px 8px;
 }
 
+#jewify-table td.payer {
+  text-align: center;
+  cursor: pointer;
+}
+
 #jewify-table td.all-col {text-align: center;}
-#jewify-table tr:nth-child(even){background-color: #f2f2f2;}
-#jewify-table tr:nth-child(odd){background-color: #ffffff;}
 #jewify-table tr:hover {background-color: #d1d3fc;}
 /*summary*/
 #jewify-table tfoot {
@@ -85,75 +92,6 @@ body {
 /*name headers*/
 #jewify-table th:nth-child(n+5) {
   width: 100px;
-}
-#jewify-table td:nth-child(2) {
-  text-align: right;
-}
-.summary td:not(:first-child):before {
-  content: '£';
-}
-
-.payer-image-container img {
-  width: 30px;
-  height: 30px;
-  border: 2px solid #bf9b30;
-  cursor: pointer;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  opacity: 0.2;
-}
-.all-checkbox, .payer-checkbox {
-  display: none;
-}
-.payer-checkbox:checked + .payer-image-container img,
-.all-checkbox:checked + .payer-image-container img {
-  opacity: 1;
-}
-.payer-payment-container {
-  display: flex;
-  align-items: center;
-  position: relative;
-  padding-left: 10px;
-  margin-right: 10px;
-  max-width: 130px;
-  background: #fff;
-  border: 1px solid #4c50af;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-}
-.payer-payment-container span {
-  color: #4c50af;
-  padding-right: 0.33em;
-}
-.payer-input {
-  flex-grow: 2;
-  border: none;
-  -moz-appearance: textfield;
-  appearance: textfield;
-  background: none;
-  font-size: 14px;
-  height: 30px;
-  width: 80%;
-  font-weight: bolder;
-}
-
-.payment {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  background-color: #B6ACD1;
-  border-color: #5B3256;
-  font-weight: 100;
-}
-.disabled input,
-.disabled span {
-  color: #000;
 }
 
 .hidden {
