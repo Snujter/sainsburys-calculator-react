@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import EqualPayButton from "./EqualPayButton";
 import Price from "./Price";
 import {observer} from "mobx-react";
+import EqualPayment from "./EqualPayment";
 
 class OrderRow extends Component {
     render() {
@@ -15,12 +15,7 @@ class OrderRow extends Component {
                 <td>{quantity}</td>
                 <td><Price price={totalPrice}/></td>
                 {payers.map(payer => (
-                    <td key={payer.id}>
-                        <div className="payment">
-                            <Price price={paymentGroup.getAmountForPayer(payer.id)}/>
-                            <EqualPayButton paymentGroup={paymentGroup} payerId={payer.id}/>
-                        </div>
-                    </td>
+                    <EqualPayment key={payer.id} payer={payer} paymentGroup={paymentGroup}/>
                 ))}
             </tr>
         );
