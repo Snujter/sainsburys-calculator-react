@@ -38,7 +38,7 @@ export const AppModel = types
                     i + 1,
                     group.item.name,
                     group.item.quantity,
-                    group.item.total,
+                    formatPrice(group.item.totalPrice),
                     ...self.payers.map(payer => formatPrice(group.getAmountForPayer(payer.id))),
                 ];
             });
