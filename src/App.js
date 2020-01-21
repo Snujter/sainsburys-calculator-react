@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import OrderTable from "./components/OrderTable";
 import { CSVLink } from "react-csv";
+import {observer} from "mobx-react";
 
 class App extends Component {
   render() {
@@ -23,4 +24,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default observer(App);
