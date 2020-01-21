@@ -58,6 +58,19 @@ body {
   background-color: #282c34;
 }
 
+.csv-btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.csv-btn-container > a {
+  padding: 10px;
+  color: white;
+  background-color: #5B3256;
+  border-radius: 10px;
+  border: 1px solid #182736;
+}
+
 .hidden {
   display: none;
 }

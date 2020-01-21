@@ -15,7 +15,9 @@ class App extends Component {
                       paymentGroups={app.paymentGroups}
                       totalPrice={app.totalPrice}
           />
-          <CSVLink data={app.csvData}>Download CSV</CSVLink>
+          <div className="csv-btn-container">
+            <CSVLink filename={`${app.delivery.formattedDate}-morrisons.csv `} data={app.csvData}>Download CSV</CSVLink>
+          </div>
         </div>
     );
   }
