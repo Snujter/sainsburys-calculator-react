@@ -10,7 +10,8 @@ class App extends Component {
 
     return (
         <div>
-          <OrderTable items={app.items}
+          <OrderTable changePaymentGroup={app.changePaymentGroup}
+                      items={app.items}
                       delivery={app.delivery}
                       payers={app.payers}
                       paymentGroups={app.paymentGroups}

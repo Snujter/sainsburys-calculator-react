@@ -7,7 +7,7 @@ import {observer} from "mobx-react";
 
 class OrderTable extends Component {
     render() {
-        const { items, delivery, payers, paymentGroups, totalPrice } = this.props;
+        const { changePaymentGroup, items, delivery, payers, paymentGroups, totalPrice } = this.props;
 
         return (
             <table id="jewify-table">
@@ -15,7 +15,8 @@ class OrderTable extends Component {
                     <OrderHeader payers={payers}/>
                 </thead>
                 <tbody>
-                    <ItemList items={items}
+                    <ItemList changePaymentGroup={changePaymentGroup}
+                              items={items}
                               payers={payers}
                               paymentGroups={paymentGroups}
                     />

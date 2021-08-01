@@ -41,7 +41,7 @@ export const EqualPaymentGroupModel = types
             return Math.floor(self.total / self.payers.length);
         },
         get totalPaid() {
-            return self.amountPerPerson * self.payers.length;
+            return self.amountPerPerson * self.payers.length + self.remainder;
         },
         get totalToPay() {
             return self.total - self.totalPaid;

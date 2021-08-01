@@ -9,6 +9,7 @@ class OrderHeader extends Component {
             <tr>
                 <th>#</th>
                 <th>Name</th>
+                <th>Type</th>
                 <th>Quantity</th>
                 <th>Price</th>
                 {payers.map(payer => <th key={payer.id}>{payer.name}</th>)}

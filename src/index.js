@@ -6,7 +6,7 @@ import {AppModel} from './models/App';
 import * as serviceWorker from './serviceWorker';
 import {EqualPaymentGroupModel} from "./models/paymentGroups/EqualPaymentGroup";
 import {PayerModel} from "./models/Payer";
-import {testData} from './test-data'
+import {testData} from './items/2021-05-11'
 import {ItemModel} from "./models/Item";
 import {generateUUID} from "./helpers/helper";
 import {DeliveryModel} from "./models/Delivery";
