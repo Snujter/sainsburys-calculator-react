@@ -90,6 +90,11 @@ body {
   border: 1px solid #182736;
 }
 
+.delivery-title {
+  color: white;
+  text-align: center;
+}
+
 .hidden {
   display: none;
 }
