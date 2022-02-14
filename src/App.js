@@ -10,6 +10,7 @@ class App extends Component {
 
     return (
         <div>
+          <h1 className="delivery-title">{app.delivery.formattedDate}</h1>
           <OrderTable changePaymentGroup={app.changePaymentGroup}
                       items={app.items}
                       delivery={app.delivery}
